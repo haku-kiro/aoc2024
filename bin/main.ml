@@ -9,5 +9,3 @@ let () =
   let total = Aoc2024.Day01.part02 "./data/day01.txt" in
   Printf.printf "Day 01, Part 02, Total: %s\n" (string_of_int total)
 ;;
-
-let () = Aoc2024.Day01_visualize.plot
