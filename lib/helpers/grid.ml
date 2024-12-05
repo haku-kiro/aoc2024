@@ -27,7 +27,9 @@ let make_bound_check grid =
   out_of_bounds 0 (Array.length grid.(0) - 1) (Array.length grid - 1) 0
 ;;
 
-let get_up grid start_i start_j end_i end_j =
+let get_up grid start_i start_j len =
+  let end_i = start_i - len in
+  let end_j = start_j in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
@@ -39,7 +41,9 @@ let get_up grid start_i start_j end_i end_j =
     String.of_seq (List.to_seq !result))
 ;;
 
-let get_up_right grid start_i start_j end_i end_j =
+let get_up_right grid start_i start_j len =
+  let end_i = start_i - len in
+  let end_j = start_j + len in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
@@ -53,7 +57,9 @@ let get_up_right grid start_i start_j end_i end_j =
     String.of_seq (List.to_seq !result))
 ;;
 
-let get_right grid start_i start_j end_i end_j =
+let get_right grid start_i start_j len =
+  let end_i = start_i in
+  let end_j = start_j + len in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
@@ -65,7 +71,9 @@ let get_right grid start_i start_j end_i end_j =
     String.of_seq (List.to_seq !result))
 ;;
 
-let get_down_right grid start_i start_j end_i end_j =
+let get_down_right grid start_i start_j len =
+  let end_i = start_i + len in
+  let end_j = start_j + len in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
@@ -79,7 +87,9 @@ let get_down_right grid start_i start_j end_i end_j =
     String.of_seq (List.to_seq !result))
 ;;
 
-let get_down grid start_i start_j end_i end_j =
+let get_down grid start_i start_j len =
+  let end_i = start_i + len in
+  let end_j = start_j in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
@@ -91,7 +101,9 @@ let get_down grid start_i start_j end_i end_j =
     String.of_seq (List.to_seq !result))
 ;;
 
-let get_down_left grid start_i start_j end_i end_j =
+let get_down_left grid start_i start_j len =
+  let end_i = start_i + len in
+  let end_j = start_j - len in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
@@ -105,7 +117,9 @@ let get_down_left grid start_i start_j end_i end_j =
     String.of_seq (List.to_seq !result))
 ;;
 
-let get_left grid start_i start_j end_i end_j =
+let get_left grid start_i start_j len =
+  let end_i = start_i in
+  let end_j = start_j - len in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
@@ -117,7 +131,9 @@ let get_left grid start_i start_j end_i end_j =
     String.of_seq (List.to_seq !result))
 ;;
 
-let get_up_left grid start_i start_j end_i end_j =
+let get_up_left grid start_i start_j len =
+  let end_i = start_i - len in
+  let end_j = start_j - len in
   let bound_check = make_bound_check grid in
   if bound_check end_i end_j
   then ""
