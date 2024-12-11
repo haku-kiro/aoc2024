@@ -43,3 +43,9 @@ let () =
   let total = Aoc2024.Day04.part02 "./data/day04.txt" in
   Printf.printf "Day 04, Part 02, answer: %d\n" total
 ;;
+
+(* Day 05 *)
+let () =
+  let total = Aoc2024.Day05.part01 "./data/day05.txt" in
+  Printf.printf "Day 05, Part 01, answer: %d\n" total
+;;
