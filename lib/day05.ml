@@ -29,21 +29,36 @@ let create_update_lists lst =
     String.split ~on:',' line |> List.map ~f:(fun n -> int_of_string n))
 ;;
 
+let rec order_check left right =
+  match left, right with
+  | lh :: lrest, rh :: rrest ->
+    if lh = rh then true else order_check lrest right
+  | [], right -> ()
+;;
+
 let valid_update rule_map update =
   (* rule, k:[v] *)
   (* update, [u] *)
-  false
+  let update_checks =
+    update
+    |> List.mapi (fun idx elm ->
+      let rule_list = Map.find rule_map elm |> Option.value in
+      let update_list = List.take (idx + 1) update in
+      0)
+  in
+  true
 ;;
 
-let validate_updates rule_map updates =
-  let valid_updates = updates |> List.filter ~f:(valid_update rule_map) in
+let check_valid_updates rule_map updates =
+  let _valid_updates = updates |> List.filter ~f:(valid_update rule_map) in
   ()
 ;;
 
 let part01 filename =
   let data = Helpers.File.read_file filename in
   let rules, updates = get_rules_and_updates data in
-  let _rule_map = create_rule_map rules in
-  let _updates = create_update_lists updates in
+  let rule_map = create_rule_map rules in
+  let updates = create_update_lists updates in
+  let _valid_updates = check_valid_updates rule_map updates in
   42
 ;;
